@@ -29,3 +29,12 @@ def update_article(article_id, title=None, content=None):
     db.session.commit()
     return article
 
+#Delete article
+def delete_article(article_id):
+    article = get_article_by_id(article_id)
+    if not article:
+        return False
+    
+    db.session.delete(article)
+    db.session.commit()
+    return True

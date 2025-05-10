@@ -15,3 +15,17 @@ def create_article(title, content,user_id):
     db.session.add(new_article)
     db.commit()
     return new_article
+
+#Update existing article
+def update_article(article_id, title=None, content=None):
+    article =get_article_by_id(article_id)
+    if not article:
+        return None , "Article not found"
+    if title:
+        article.title = title
+    if content:
+        article.content = content
+
+    db.session.commit()
+    return article
+

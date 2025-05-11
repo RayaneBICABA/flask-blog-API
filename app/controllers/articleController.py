@@ -8,3 +8,10 @@ def get_all_articles():
 #Obtain one article by id
 def get_article_by_id(article_id):
     return Article.query.get(article_id)
+
+#Create new article
+def create_article(title, content,user_id):
+    new_article = Article(title=title, content=content,user_id =user_id)
+    db.session.add(new_article)
+    db.commit()
+    return new_article

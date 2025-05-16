@@ -1,4 +1,5 @@
 from app.models import User
+from app.utils.passwordHash import hash_password
 from app import db
 
 #Obtain all users
@@ -14,7 +15,8 @@ def get_user_by_email(email):
     return User.query.filter_by(email=email).first()
 
 #Create a new user
-def create_user(username,email,password_hash,profile_image_url="default.img"):
+def create_user(username,email,password,profile_image_url="default.img"):
+    password_hash = hash_password(password)
     new_user = User(
         username=username,
         email=email,

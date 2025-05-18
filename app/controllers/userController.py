@@ -40,3 +40,13 @@ def update_user(user_id,username,email,profile_image_url="default_img"):
 
     db.session.commit()
     return user
+
+
+#Delete an existing user
+def delete_user(user_id):
+    user = User.auery.get(user_id)
+    if not user:
+        return False
+    db.session.delete(user)
+    db.session.commit()
+    return user

@@ -25,3 +25,18 @@ def create_user(username,email,password_hash,profile_image_url="default.img"):
     db.session.add(new_user)
     db.session.commit()
     return new_user
+
+#Update an existing user
+def update_user(user_id,username,email,profile_image_url="default_img"):
+    user = User.query.get(user_id)
+    if not user:
+        return None
+    if username:
+        user.username = username
+    if email:
+        user.email = email
+    if profile_image_url:
+        user.profile_image_url = profile_image_url
+
+    db.session.commit()
+    return user

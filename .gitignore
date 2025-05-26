@@ -1,0 +1,19 @@
+.venv
+# Dossiers Python à ignorer
+__pycache__/
+*.py[cod]
+
+# Dossier VS Code
+.vscode/
+
+# Environnement virtuel
+.venv/
+env/
+
+# Base de données (optionnel si générée dynamiquement)
+*.sqlite3
+*.db
+
+# Fichiers système
+.DS_Store
+Thumbs.db

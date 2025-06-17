@@ -14,3 +14,12 @@ def login():
         return jsonify({"error": error}), 401
     return jsonify({"token": token})
 
+
+@auth_bp.route('/register', methods=['POST'])
+def register():
+    data = request.get_data()
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+    user = create_user(username, email, password)
+    return jsonify(user.to_dict()), 201

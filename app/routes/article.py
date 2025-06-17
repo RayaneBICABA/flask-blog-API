@@ -12,3 +12,11 @@ article_bp = Blueprint('article', __name__, url_prefix='/api/articles')
 def get_articles():
     articles = get_all_articles()
     return jsonify([article.to_dict() for article in articles])
+
+#Get an artcile by id
+@article_bp.route('/<int:article_id>', methods=['GET'])
+def get_article(article_id):
+    article = get_article_by_id(article_id)
+    if not article:
+        return jsonify({"error": "Article not found"}), 404
+    return jsonify(article.to_dict())

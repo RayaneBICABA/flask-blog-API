@@ -20,3 +20,14 @@ def get_article(article_id):
     if not article:
         return jsonify({"error": "Article not found"}), 404
     return jsonify(article.to_dict())
+
+# Create an article
+@article_bp.route('/', methods=['POST'])
+@login_required
+def create_new_artcile():
+    data = request.get_json()
+    title = data.get('title')
+    content = data.get('content')
+    user_id = g.user.id  # Assuming you have a login decorator that sets
+    article = create_article(title, content, user_id)
+    return jsonify(article.to_dict()), 201

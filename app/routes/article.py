@@ -43,3 +43,12 @@ def update_an_article(article_id):
     if not article:
         return jsonify({'error':'Article Not Found'}), 404
     return jsonify(article.to_dict())
+
+# Delete an article
+@article_bp.route('/<int:artcile_id>', methods=['DELETE'])
+@login_required
+def delete_an_article(article_id):
+    deleted = delete_an_article(article_id)
+    if not deleted:
+        return jsonify({'error':'Article Not Found'}), 404
+    return jsonify({'message': 'Article deleted'}), 200

@@ -31,3 +31,15 @@ def create_new_artcile():
     user_id = g.user.id  # Assuming you have a login decorator that sets
     article = create_article(title, content, user_id)
     return jsonify(article.to_dict()), 201
+
+# Update an article
+@article_bp.route('/<int:article_id>', methods = ['PUT'])
+@login_required
+def update_an_article(article_id):
+    data = request.get_json()
+    title = data.get('title')
+    content = data.get('content')
+    article = update_article(article_id,title,content)
+    if not article:
+        return jsonify({'error':'Article Not Found'}), 404
+    return jsonify(article.to_dict())

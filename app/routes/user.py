@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request
-from app.controllers.userController import(
+from app.controllers.userController import (
     get_all_users, get_user_by_id, update_user, delete_user
 )
-from app.routes.auth import login_required, admin_required
+from app.utils.auth import login_required, admin_required
 
 user_bp = Blueprint('user', __name__, url_prefix='/api/users')
 

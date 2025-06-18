@@ -32,3 +32,12 @@ def update_a_user(user_id):
     if not user:
         return jsonify({'error': 'User not found'}), 404
     return jsonify(user.to_dict())
+
+
+@user_bp.route('/<int:user_id>', methods=['DELETE'])
+@admin_required
+def delete_a_user(user_id):
+    deleted = delete_user(user_id)
+    if not deleted:
+        return jsonify({'error': 'User not found'}), 404
+    return jsonify({'message': 'User deleted'}), 200

@@ -11,3 +11,13 @@ user_bp = Blueprint('user', __name__, url_prefix='/api/users')
 def get_users():
     users = get_all_users()
     return jsonify([user.to_dict() for user in users])
+
+
+@user_bp.route('/<int:user_id>', methods=['GET'])
+@login_required
+def get_user(user_id):
+    user = get_user_by_id(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    return jsonify(user.to_dict())
+

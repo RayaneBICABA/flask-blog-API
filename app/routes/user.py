@@ -21,3 +21,14 @@ def get_user(user_id):
         return jsonify({'error': 'User not found'}), 404
     return jsonify(user.to_dict())
 
+@user_bp.route('/<int:user_id>', methods=['PUT'])
+@login_required
+def update_a_user(user_id):
+    data = request.get_json()
+    username = data.get('username')
+    email = data.get('email')
+    profile_image_url = data.get('profile_image_url')
+    user = update_user(user_id, username, email, profile_image_url)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    return jsonify(user.to_dict())

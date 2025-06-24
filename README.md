@@ -45,7 +45,7 @@ A robust and secure RESTful API built with Flask for managing users and blog art
 
 1. Clone the repository:
    ```bash
-   git clone <your-repo-url>
+   git clone git@github.com:RayaneBICABA/flask-api.git
    cd flask-api
    ```
 

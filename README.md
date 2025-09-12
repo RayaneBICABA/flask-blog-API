@@ -244,7 +244,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Author
 
-Engineered with 💙 by Ryko – BICABA P. Jean-Louis Rayane
+Engineered with 💙 by Ravex – BICABA P. Jean-Louis Rayane
 
 - Email: rayanebicaba.dev@gmail.com
 - GitHub: [https://github.com/yourusername](https://github.com/RayaneBICABA)
